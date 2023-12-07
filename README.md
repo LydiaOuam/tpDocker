@@ -10,11 +10,23 @@ Deploy this application inside a network. Make sure the two containers can commu
 3. Create a mariadb container as a database :
    ```docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes -e MARIADB_USER=bn_prestashop -e MARIADB_PASSWORD=bitnami -e MARIADB_DATABASE=bitnami_prestashop --network prestaNetwork bitnami/mariadb```
 4. Create a prestashop container :
-``` docker run -d --name prestashop -p 8081:8080 -p 443:8443 -e ALLOW_EMPTY_PASSWORD=yes -e PRESTASHOP_DATABASE_USER=bn_prestashop -e PRESTASHOP_DATABASE_PASSWORD=bitnami -e PRESTASHOP_DATABASE_NAME=bitnami_prestashop --network prestaNetwork bitnami/prestashop``
+``` docker run -d --name prestashop -p 8081:8080 -p 443:8443 -e ALLOW_EMPTY_PASSWORD=yes -e PRESTASHOP_DATABASE_USER=bn_prestashop -e PRESTASHOP_DATABASE_PASSWORD=bitnami -e PRESTASHOP_DATABASE_NAME=bitnami_prestashop --network prestaNetwork bitnami/prestashop```
 
 5.Install ping command on both contianers : 
+prestashop container : 
 ```docker exec -ti -u 0 prestashop apt-get update
-docker exec -ti -u 0 prestashop apt-get install -y iputils-ping```
+docker exec -ti -u 0 prestashop apt-get install -y iputils-ping
+```
+mariadb container : 
+```docker exec -ti -u 0 mariadb apt-get update
+docker exec -ti -u 0 mariadb apt-get install -y iputils-ping
+```
+6. Do the ping using names of the containers :
+   we access inside the prestashop container and we run the command ```ping mariadb```
+   we access inside the mariadb container and we run the command ```ping prestashop```
+And this way we konw that the two containers can communicate to each other
+
+ 
 
 Access from localhost :
 Error
