@@ -83,6 +83,9 @@ apt install -y iproute2
 ip route add 10.0.1.0/24 via 10.0.1.3
 ip route add 10.0.0.0/24 via 10.0.0.3
 ```
+6. Ping from mariadb to prestashop :
+   :( doesn't work
+   But after verifying using ```traceroute 10.0.0.2```we identified that the problem is with the ping because we can reach the forntend from the backend 
 
 # Team members : 
 - Kafia Airouche
