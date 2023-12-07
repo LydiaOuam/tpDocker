@@ -38,8 +38,7 @@ And this way we konw that the two containers can communicate to each other
 2. We connected the container mariadb to the mariadb-network and we diconnected it from the prestaNetwork
    We did the same thing with the container of prestashop
 
-```
-docker network connect mariadb-network mariadb
+```docker network connect mariadb-network mariadb
 docker network connect prestashop-network prestashop
 
 docker network disconnect prestaNetwork mariadb
@@ -50,8 +49,8 @@ docker network disconnect prestaNetwork prestashop
 docker run -d --name router --network prestashop-network --privileged -p 80:80 nginx
 docker network connect mariadb-network router
 ```
-4. install ping et ip route with the command:```
-apt update -y 
+4. install ping et ip route with the command:
+```apt update -y 
 apt install -y iputils-ping
 apt install -y iproute2```
 
