@@ -1,7 +1,7 @@
 # Docker networking
 
 The prestashop image available [Prestashop image avaible here](https://hub.docker.com/r/bitnami/prestashop) can be used to deploy an e-commerce application. This application make use of two components. a fronten website and a database for storing persistante data.
-We used the https://hub.docker.com/r/prestashop/prestashop image instead of bitnami.
+We used the [prestashop/prestashop](https://hub.docker.com/r/prestashop/prestashop) instead of bitnami.
 
 ## Task 1
 
