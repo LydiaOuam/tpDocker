@@ -1,6 +1,7 @@
 # Docker networking
 
 The prestashop image available [Prestashop image avaible here](https://hub.docker.com/r/bitnami/prestashop) can be used to deploy an e-commerce application. This application make use of two components. a fronten website and a database for storing persistante data.
+We used the https://hub.docker.com/r/prestashop/prestashop image instead of bitnami.
 
 ## Task 1
 
@@ -8,10 +9,9 @@ Deploy this application inside a network. Make sure the two containers can commu
 1. Create prestNetwork
    ```docker network create prestaNetwork ```
 3. Create a mariadb container as a database :
-   ```docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes -e MARIADB_USER=bn_prestashop -e MARIADB_PASSWORD=bitnami -e MARIADB_DATABASE=bitnami_prestashop --network prestaNetwork bitnami/mariadb```
+```docker run -d --name mariadb --network prestaNetwork -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=prestashop_db -e MYSQL_USER=prestashop_user -e MYSQL_PASSWORD=1234 -v mariadb_data:/var/lib/mysql mariadb```
 4. Create a prestashop container :
-``` docker run -d --name prestashop -p 8081:8080 -p 443:8443 -e ALLOW_EMPTY_PASSWORD=yes -e PRESTASHOP_DATABASE_USER=bn_prestashop -e PRESTASHOP_DATABASE_PASSWORD=bitnami -e PRESTASHOP_DATABASE_NAME=bitnami_prestashop --network prestaNetwork bitnami/prestashop```
-
+```docker run -d --name prestashop --network prestaNetwork -e DB_SERVER=mariadb_ynov -e DB_NAME=prestashop_db -e DB_USER=prestashop_user -e DB_PASSWD=1234 -p 8080:80 -v prestashop_data:/var/data/html prestashop/prestashop```
 5.Install ping command on both contianers : 
 prestashop container : 
 ```docker exec -ti -u 0 prestashop apt-get update
@@ -25,11 +25,8 @@ docker exec -ti -u 0 mariadb apt-get install -y iputils-ping
    we access inside the prestashop container and we run the command ```ping mariadb```
    we access inside the mariadb container and we run the command ```ping prestashop```
 And this way we konw that the two containers can communicate to each other
-
- 
-
-Access from localhost :
-Error
+7. Access from localhost :
+   via ce [lien](http://loclahost:8080)
 
 # Task 2
 
