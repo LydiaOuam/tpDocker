@@ -87,7 +87,7 @@ ip route add 10.0.0.0/24 via 10.0.0.3
    doesn't work :worried:
    But after verifying using ```traceroute 10.0.0.2```we identified that the problem is with the ping because we can reach the forntend from the backend 
 
-# Team members : 
+# Team members :fist: 
 - Kafia Airouche
 - Lydia Ouamrane
 
