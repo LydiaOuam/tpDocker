@@ -7,7 +7,7 @@ We used the [prestashop/prestashop](https://hub.docker.com/r/prestashop/prestash
 
 Deploy this application inside a network. Make sure the two containers can communicate with each other using their names.
 1. Create prestNetwork
-   ```docker network create prestaNetwork ```
+   ```docker network create prestaNetwork```
 3. Create a mariadb container as a database :
 ```docker run -d --name mariadb --network prestaNetwork -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=prestashop_db -e MYSQL_USER=prestashop_user -e MYSQL_PASSWORD=1234 -v mariadb_data:/var/lib/mysql mariadb```
 4. Create a prestashop container :
