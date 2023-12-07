@@ -16,13 +16,12 @@ Deploy this application inside a network. Make sure the two containers can commu
 ```docker run -d --name prestashop --network prestaNetwork -e DB_SERVER=mariadb_ynov -e DB_NAME=prestashop_db -e DB_USER=prestashop_user -e DB_PASSWD=1234 -p 8080:80 -v prestashop_data:/var/data/html prestashop/prestashop```
 4.Install ping command on both contianers : 
 prestashop container : 
-```docker exec -ti -u 0 prestashop apt-get update
-docker exec -ti -u 0 prestashop apt-get install -y iputils-ping
-```
-mariadb container : 
-```docker exec -ti -u 0 mariadb apt-get update
-docker exec -ti -u 0 mariadb apt-get install -y iputils-ping
-```
+```docker exec -ti -u 0 prestashop apt-get update```
+```docker exec -ti -u 0 prestashop apt-get install -y iputils-ping```
+mariadb container :
+
+```docker exec -ti -u 0 mariadb apt-get update```
+```docker exec -ti -u 0 mariadb apt-get install -y iputils-ping```
 5. Do the ping using names of the containers :
    we access inside the prestashop container and we run the command ```ping mariadb```
    we access inside the mariadb container and we run the command ```ping prestashop```
