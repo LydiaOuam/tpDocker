@@ -31,8 +31,10 @@ docker exec -ti -u 0 prestashop apt-get install -y iputils-ping
 
 mariadb container :
 
-```docker exec -ti -u 0 mariadb apt-get update
-docker exec -ti -u 0 mariadb apt-get install -y iputils-ping```
+```
+docker exec -ti -u 0 mariadb apt-get update
+docker exec -ti -u 0 mariadb apt-get install -y iputils-ping
+```
 
 5. Do the ping using names of the containers :
 
