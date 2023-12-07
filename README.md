@@ -24,8 +24,10 @@ Deploy this application inside a network. Make sure the two containers can commu
  
 prestashop container :
 
-```docker exec -ti -u 0 prestashop apt-get update```
-```docker exec -ti -u 0 prestashop apt-get install -y iputils-ping```
+```
+docker exec -ti -u 0 prestashop apt-get update
+docker exec -ti -u 0 prestashop apt-get install -y iputils-ping
+```
 
 mariadb container :
 
